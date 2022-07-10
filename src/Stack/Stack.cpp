@@ -3,7 +3,17 @@
 template <class T>
 Stack<T>::Stack()
 {
-    top = -1;
+    m_Top = -1;
+    m_Stack = new T[m_Size];
+}
+
+template <class T>
+Stack<T>::Stack(int p_Size)
+{
+    if (p_Size > 0 && p_Size < 1000)
+        m_Size = p_Size;
+    m_Top = -1;
+    m_Stack = new T[m_Size];
 }
 
 template <class T>
@@ -16,25 +26,28 @@ void Stack<T>::Push(T p_K)
         // into it
         cout << "Stack is full\n";
     }
-    // Inserted element
-    cout << "Inserted element " << k << endl;
-    // Incrementing the top by unity as element
-    // is to be inserted
-    top = top + 1;
+    else
+    {
+        // Inserted element
+        cout << "Inserted element " << k << endl;
+        // Incrementing the top by unity as element
+        // is to be inserted
+        m_Top = m_Top + 1;
 
-    // Now, adding element to stack
-    m_Stack[top] = k;
+        // Now, adding element to stack
+        m_Stack[m_Top] = k;
+    }
 }
 
 template <class T>
 T Stack<T>::pop()
 {
     // Initialising a variable to store popped element
-    T popped_element = m_Stack[top];
+    T popped_element = m_Stack[m_Top];
 
     // Decreasing the top as
     // element is getting out from the stack
-    top--;
+    m_Top--;
 
     // Returning the element/s that is/are popped
     return popped_element;
@@ -44,7 +57,7 @@ template <class T>
 T Stack<T>::peek()
 {
     // Initialising a variable to store top element
-    T peek_element = m_Stack[top];
+    T peek_element = m_Stack[m_Top];
     // Returning the top element
     return peek_element;
 }
@@ -53,7 +66,7 @@ template <class T>
 bool Stack<T>::isFull()
 {
     // Till top in inside the stack
-    if (top == (SIZE - 1))
+    if (m_Top == (m_Size - 1))
         return 1;
     else
         // As top can not exceeds th size
@@ -63,7 +76,7 @@ bool Stack<T>::isFull()
 template <class T>
 bool Stack<T>::isEmpty()
 {
-    if (top == -1)
+    if (m_Top == -1)
         return 1;
     else
         return 0;

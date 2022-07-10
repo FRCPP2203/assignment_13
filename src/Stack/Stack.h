@@ -1,20 +1,25 @@
 #ifndef __STACK_H__
 #define __STACK_H__
 
-#define SIZE 100
 template <class T>
 class Stack
 {
 private:
     // Taking data member top
-    int top;
+    int m_Top;
+
+    // Initialising size
+    int m_Size = 10;
 
     // Initialising stack(array) of given size
-    T m_Stack[SIZE];
+    T *m_Stack;
 
 public:
     // Empty constructor
     Stack();
+
+    //
+    Stack(int p_Size);
 
     // Method 1
     // To add element to stack which can be any type
