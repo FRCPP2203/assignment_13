@@ -22,7 +22,6 @@ public:
     void push_back(T p_Value)
     {
         Node<T> *newNode = new Node<T>(p_Value, NULL);
-        m_Head = newNode;
     }
     void insert(T p_Value)
     {
