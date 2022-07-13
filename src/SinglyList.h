@@ -2,6 +2,8 @@
 #define __SINGLYLIST_H__
 
 #include <iostream>
+#include <algorithm>
+#include "Student.h"
 template <class T>
 struct Node
 {
@@ -80,6 +82,19 @@ public:
             i++;
         }
         m_count++;
+    }
+    void bubble_sort()
+    {
+        for (Node<T> *ptr1 = m_Head; ptr1 != NULL; ptr1 = ptr1->m_Next)
+        {
+            for (Node<T> *ptr2 = m_Head; ptr2->m_Next != NULL; ptr2 = ptr2->m_Next)
+            {
+                if (ptr2->m_Value.getID() > ptr2->m_Next->m_Value.getID())
+                {
+                    Student::swap(ptr2->m_Value, ptr2->m_Next->m_Value);
+                }
+            }
+        }
     }
     void remove(T p_Value)
     {

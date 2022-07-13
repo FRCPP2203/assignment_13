@@ -98,6 +98,8 @@ int main()
         break;
         case 5:
         {
+            list.bubble_sort();
+            list.print();
         }
         break;
         case 0:

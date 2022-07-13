@@ -9,21 +9,22 @@ public:
     Student()
     {
     }
+    // constructor
     Student(char *p_Name, int p_ID)
         : m_Name(p_Name), m_ID(p_ID)
     {
     }
-
+    // get name
     char *getName()
     {
         return m_Name;
     }
-
+    // get id
     int getID()
     {
         return m_ID;
     }
-
+    // create one student
     void createOne()
     {
         std::cout << "Enter Full Name: ";
@@ -46,7 +47,7 @@ public:
         output << "\n";
         return output;
     };
-    void swap(Student &A, Student &B)
+    static void swap(Student &A, Student &B)
     {
         Student tmp = A;
         A = B;
